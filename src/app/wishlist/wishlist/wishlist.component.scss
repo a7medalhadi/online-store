@@ -1,0 +1,45 @@
+@import'../../../assets/scss/Home.css';
+
+.header{
+    margin: 20px 20px 10px 0;
+    display: inline-grid ;
+    width: 100%;
+  }
+  .title{
+    margin-bottom: -100px
+  }
+  .mycard{
+    margin: 3px 0 0 0;
+    height: 1px;
+    width: 100%;
+    position: relative;
+    background-color: #80008026;
+  }
+  .arranging{
+    width: 10%;
+    margin-top: -30px;
+  }
+   .form-control{
+    padding: .1175rem .75rem  !important
+  }
+  
+  .pagination{
+    margin-left: 0
+  }
+  @media (max-width:991px) {
+    .header{
+      display: block
+    }
+    .arranging {
+      margin-top: 10px;
+      margin-right: 25%;
+      width: 50%
+    }
+    .title{
+      text-align: center;
+      margin-bottom: 0
+    }
+    .pagination{
+      margin-left: 20%
+    }
+  }

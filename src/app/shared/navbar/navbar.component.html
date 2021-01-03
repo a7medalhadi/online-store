@@ -1,0 +1,152 @@
+<!-- Header Section Begin -->
+<header class="header-section">
+  <div class="header-top">
+    <div class="container">
+      <div class="ht-left">
+        <div class="mail-service">
+          <i class=" fa fa-envelope"></i>
+          hello.turkieystore@gmail.com
+        </div>
+        <div class="phone-service">
+          <i class=" fa fa-phone"></i>
+          +249 909488727
+        </div>
+      </div>
+      <div class="ht-right">
+        <a style="display: none" routerLink="user/login" *ngIf="!auth.isLoggedIn()" href="#" class="mim login-panel">
+          <i class="fa fa-user"></i>تسجيل الدخول
+        </a>
+        <div  *ngIf="auth.isLoggedIn()" class="login-panel nav-item nav-profile dropdown" ngbDropdown>
+            <a class="nav-link dropdown-toggle" id="profileDropdown" ngbDropdownToggle>
+              <div class="nav-profile-img">
+                <img src="assets/images/faces-clipart/avatar.png" alt="image">
+                <span class="availability-status online"></span>
+              </div>
+              <div class="nav-profile-text">
+                <p class="mb-1 text-black">{{details.name}}</p>
+              </div>
+            </a>
+            <div class="min dropdown-menu navbar-dropdown" ngbDropdownMenu aria-labelledby="profileDropdown">
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="user/profile" routerLinkActive #myorders="routerLinkActive">
+                <i class="mdi mdi mdi-basket mr-2 text-primary"></i>
+                الصفحة الشخصية
+              </a>
+              <div class="dropdown-divider"></div>
+              <a (click)="auth.logout()" class="dropdown-item" href="javascript:;">
+                <i class="mdi mdi-logout mr-2 text-danger"></i>
+                تسجبل الخروج
+              </a>
+            </div>
+          </div>
+        <div class="top-social">
+          <a href="#">
+            <i class="ti ti-facebook"></i>
+          </a>
+          <a href="#">
+            <i class="ti ti-twitter-alt"></i>
+          </a>
+          <a href="#">
+            <i class="ti ti-linkedin"></i>
+          </a>
+          <a href="#">
+            <i class="ti ti-pinterest"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="inner-header">
+      <div class="row">
+        <div class="col-lg-2 col-md-2">
+          <div class="logo">
+            <a routerLink="home">
+              <img src="../../assets/images/fashi/logo.png" alt="">
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-7 col-md-7">
+          <div class="advanced-search">
+            <form action="#" class="input-group full">
+              <input (keyup.enter)="search()" [(ngModel)]="searchFor" name="searchFor" type="text" placeholder="بحث">
+              <button (click)="search()" type="button" class="pa">
+                <i class="ti ti-search"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="col-lg-3 text-right col-md-3">
+          <ul class="nav-right">
+            <li  style="cursor: pointer;" class="heart-icon">
+              <a routerLink = "wishlist/my-wishlist" >
+                <i class="ei ei-icon_heart_alt"></i>
+                <span>{{wishnum}}</span>
+              </a>
+            </li>
+            <li style="cursor: pointer;" (mouseover)="prepairCartData()" (mouseout)="cartModal=false" class="hover-cart cart-icon">
+              <a >
+                <i class="ei ei-icon_bag_alt"></i>
+                <span>{{cartnum}}</span>
+              </a>
+            </li>
+            <li class="cart-price drop">
+              الأقسام
+              <span class="mdi mdi-menu"></span>
+              <div class="depa">
+                    <a  routerLink = "deps/men"> رجال
+                    </a>
+                    <a routerLink = "deps/women">نساء</a>
+                </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<!--shopping cart start********************************************************************************-->
+<div class="container">
+  <div (mouseover)="cartModal = true" (mouseout)="cartModal=false" [ngClass]="{'cart-hovering':cartModal}" class=" shopping-cart">
+    <div class="shopping-cart-header">
+      <i class="fa fa-shopping-cart cart-icon"></i>
+      <span class="badge">{{cartnum}}</span>
+      <div class="shopping-cart-total">
+        <span class="main-color-text">SDG{{totalPrice}}</span>
+        <span class="lighter-text"> :مجموع</span>
+      </div>
+    </div>
+    <ul *ngFor="let item of cart" class="shopping-cart-items">
+      <li class="clearfix">
+        <span class="x mdi mdi-close" (click)="deletItem(item)"></span>
+        <img src={{item.itemImgUrl}} alt="" />
+        <div class="det">
+          <span class="item-name">{{item.itemName}}</span>
+          <span class="item-price">{{item.itemPrice}} SDG</span>
+          <div class="info">
+            <div class="ban">
+              <div *ngIf="item.itemSizes != 0" class="form-group">
+                <label class="sizelable">
+                  <span class="star">*</span>:المقاس</label>
+                <select (change)="sized(item)" [(ngModel)]="item.selectedSize" name="selectedSize" class="sac form-control form-control-sm size">
+                  <option> </option>
+                  <option *ngFor="let size of item.itemSizes">{{size}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="ban2">
+              <label class="sizelable">:الكمية</label>
+              <input (change)="quantized(item)" type="number" [(ngModel)]="item.itemQua" name="selectedSize" class="form-control form-control-sm qu"
+              />
+            </div>
+          </div>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="error && !noItems" class="er">{{error}}</div>
+    <a *ngIf="!noItems" (click)="navCheckout()" class="button">أكمل الشراء</a>
+  </div>
+</div>
+<!--end shopping-cart -->

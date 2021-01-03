@@ -1,0 +1,58 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="breadcrumb-text">
+                  <span>بحث</span> /
+                  <a href="#" routerLink="/">الرئيسية
+                      <i class="fa fa-home"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-9 order-1 order-lg-1">
+              <div class="product-list">
+                  <div style=" font-weight: bolder;
+                  color: brown" *ngIf="pageOfItems.length == 0 && !isLoading">!لم نعثر على نتائج حاول مجددا</div>
+                  <app-itemspinner *ngIf="isLoading"></app-itemspinner>
+                  <div *ngIf="!isLoading && pageOfItems" class="row">
+                      <div *ngFor="let item of pageOfItems" class="col-lg-4 col-sm-6">
+                          <app-card [item]="item"></app-card>
+                      </div>
+                  </div>
+
+              </div>
+              <ngb-pagination *ngIf="pager.pages && pager.pages.length && pager.totalPages != 0  && !isLoading" class="pagination" [pageSize]="pager.pageSize" [(page)]="currentPage" [collectionSize]="pager.totalItems" #numPages  (pageChange)="fetchData(currentPage)"></ngb-pagination>
+          </div>
+      </div>
+  </div>
+</section>
+<!--<div class="header" >
+    <h3 class="title">
+      نتائج البحث
+    </h3>
+</div>
+
+<div class="mycard"></div>
+
+  <app-itemspinner *ngIf="isLoading"></app-itemspinner>
+  <h1 class="noItem" *ngIf = "noItem"  >
+      لم تتوفر أي نتائج بحث 
+  </h1>
+  <div *ngIf="!isLoading && searchFor" class="row">
+    <div *ngFor="let item of pageOfItems" class="col-md-3 stretch-card grid-margin">
+      <app-card [item]="item"></app-card>
+    </div>
+    <ngb-pagination *ngIf="pager.pages && pager.pages.length && pager.totalPages != 0  && !isLoading" class="pagination" [pageSize]="pager.pageSize" [collectionSize]="pager.totalPages"
+    #numPages [(page)]="currentPage" (pageChange)="paginationPage(currentPage)"></ngb-pagination>
+  </div>
+-->

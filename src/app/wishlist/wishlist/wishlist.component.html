@@ -1,0 +1,34 @@
+<!-- Breadcrumb Section Begin -->
+<div class="breacrumb-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb-text">
+                    <span>قائمة الامنيات</span> /
+                    <a href="#" routerLink="/">الرئيسية
+                        <i class="fa fa-home"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Section Begin -->
+
+<!-- Product Shop Section Begin -->
+<section class="product-shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 order-1 order-lg-1">
+                <div class="product-list">
+                    <div class="error" *ngIf="!itemList">"قائمة الامنيات خالية"</div>
+                    <div *ngIf="!isLoading && !error" class="row">
+                        <div *ngFor="let item of itemList" class="col-lg-4 col-sm-6">
+                            <app-card [item]="item"></app-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

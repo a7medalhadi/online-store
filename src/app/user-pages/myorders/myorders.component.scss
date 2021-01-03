@@ -1,0 +1,98 @@
+@import "../../../styles.scss";
+@import'../../../assets/scss/Home.css';
+
+  body {
+    background: #fffcdd;
+    padding: 2.23em;
+  }
+  
+
+
+  .user-profile {
+    box-sizing: inherit !important;
+    height: 16.5em;
+    background: #fff;
+    border-radius: .3em;
+  }
+  
+  .user-profile  .username {
+    margin: auto;
+    margin-top: -4.40em;
+    margin-right: 10px;
+    color: #658585;
+    font-family: "Coda", sans-serif;
+    font-weight: bolder;
+  }
+  .user-profile  .bio {
+    margin: auto;
+    display: inline-block;
+    margin-right: 10px;
+    color: #658585; 
+    font-weight: bold;
+    font-family: "varela round", sans-serif;
+  }
+  .user-profile .email{
+    margin: auto;
+    margin-right: 10px;
+    color: #658585; 
+    font-weight: bold;
+    font-family: "varela round", sans-serif;
+  }
+  .user-profile  .description {
+    margin: auto;
+    margin-right: 10px;
+    color: #658585; 
+    font-weight: bold;
+    font-family: "varela round", sans-serif;
+  }
+  .user-profile > img.avatar {
+    padding: .7em;
+    margin-right: 30%;
+    height: 6.23em;
+    width: 6.23em;
+    position: relative;
+    border-radius: 18em;
+  }
+  
+  .user-profile .data {
+      margin: 0em auto;
+      height: 2.40em;
+    background: $second;
+    text-align: center;
+    border-radius: .3em .3em 0 0 ;
+    color: white
+  }
+  .details{
+    position: relative;
+    padding-top: 70px;
+  }
+  
+  .user-profile span:hover {
+    color: #daebea;
+  }
+  
+  .user-profile a{
+    margin-right: 40%;
+    color: $second;
+    -webkit-box-shadow: 0 13px 32px rgba(51, 51, 51, 0.1);
+    box-shadow: 0 13px 32px rgba(51, 51, 51, 0.1);
+   }
+
+   .tl{
+    width: 200px;
+    border-bottom: 2px solid $second;
+   }
+   .ic{
+    background-color: #ffffff !important;
+    color: $second !important;
+   }
+   .ic:hover{
+     color: #fff !important;
+     background: $second !important
+   }
+  @media(max-width:776px){
+  .user-profile a{
+    margin-right: 24%;
+
+   }
+  }

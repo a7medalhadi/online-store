@@ -1,0 +1,24 @@
+@import '../../../assets/scss/item.scss';
+@import'../../../assets/scss/Home.css';
+
+.header{
+    margin: 20px 20px 10px 0;
+    display: inline-grid ;
+    width: 100%;
+  }
+  .title{
+    margin-bottom: -100px
+  }
+  .mycard{
+    margin: 3px 0 0 0;
+    height: 1px;
+    width: 100%;
+    position: relative;
+    background-color: #80008026;
+  }
+
+
+.noItem{
+    text-align: center;
+    margin-top: 100px;
+}

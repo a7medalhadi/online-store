@@ -1,0 +1,20 @@
+
+<!-- Modal starts -->
+<div class="modal-body">
+        <div *ngIf="loading" class="spinner-wrapper">
+                <div class="donut"></div>
+            </div>
+        <div *ngIf="servererr" class="alert alert-danger">
+                    <div>حدث خطأ تأكد من خدمة الانترنت قم حاول مرة أخرى لاحقا</div>
+            </div>
+        
+            <div *ngIf="done" class="alert alert-primary" >
+                <div>تم الغاء الطلب</div> 
+            </div>
+    <h3 *ngIf="!loading && !done " >!سيتم مسح الطلب</h3>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal('close')">الغاء</button>
+    <button *ngIf="!done" type="button" class="btn btn-primary" (click)="cancelOrder()">تأكيد</button>
+</div>
+  <!-- Modal Ends -->

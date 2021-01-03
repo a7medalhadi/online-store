@@ -1,0 +1,23 @@
+<div class="product-card">
+  <div class="product-tumb">
+    <img src={{item.itemImgUrl}} alt="">
+  </div>
+  <div class="product-details">
+    <h4>
+      <a (click)="navItem(item)">{{item.itemName}}</a>
+    </h4>
+    <div class="product-bottom-details">
+      <div class="product-price">{{item.itemPrice}} SDG</div>
+      <div class="product-links">
+        <a (click)="removeWish(item)">
+          <i *ngIf="!liked" class="mdi mdi-heart is"></i>
+          <i *ngIf="liked" class="colored mdi mdi-heart is"></i>
+        </a>
+        <a (click)="openMediumModal(item)">
+          <i *ngIf="!carted" class="mdi mdi-cart is"></i>
+          <i *ngIf="carted" class="colored mdi mdi-cart is"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

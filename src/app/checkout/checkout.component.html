@@ -1,0 +1,101 @@
+<section class="checkout-section spad">
+    <div class="container">
+        <form action="#" class="checkout-form">
+            <div class="row">
+                <div *ngIf="!auth.isLoggedIn() && !done" class="col-lg-6">
+                    <div class="checkout-content">
+                        <a href="#" class="content-btn">تسجيل الدخول</a>
+                    </div>
+                    <h4>معلومات الاتصال</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="fir">الاسم
+                                <span>*</span>
+                            </label>
+                            <input [(ngModel)]="noUser.name" name="name" type="text" id="fir">
+                        </div>
+                        <div class="col-lg-12">
+                            <label for="street">العنوان
+                                <span>*</span>
+                            </label>
+                            <input [(ngModel)]="noUser.address" name="address" type="text" id="street" class="street-first">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="email">البريد الالكتروني
+                                <span>*</span>
+                            </label>
+                            <input [(ngModel)]="noUser.email" name="email" type="text" id="email">
+                        </div>
+                        <div class="col-lg-6">
+                            <label for="phone">رقم الهاتف
+                                <span>*</span>
+                            </label>
+                            <input [(ngModel)]="noUser.phone" name="phone" type="text" id="phone">
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="create-item">
+                                <label for="acc-create">
+                                    تسجيل معلوماتك في الموقع؟
+                                    <input type="checkbox" id="acc-create">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf = "!done" class="col-lg-6">
+                    <div class="checkout-content">
+                        <input type="text" placeholder="أدخل كوبون التخفيض">
+                    </div>
+                    <div class="place-order">
+                        <h4>الطلب</h4>
+                        <div class="order-total">
+                            <ul class="order-table">
+                                <li>العنصر
+                                    <span>المجموع</span>
+                                </li>
+                                <div *ngFor="let item of cart">
+                                    <li class="fw-normal">{{item.itemName}}
+                                        <span>{{item.itemPrice}}SDG</span>
+                                    </li>
+                                </div>
+                                <li class="total-price">المجموع
+                                    <span>{{total}}SDG</span>
+                                </li>
+                            </ul>
+                            <div class="payment-check">
+                                <div class="pc-item">
+                                    <label for="pc-check">
+                                        دفع مباشر
+                                        <input disabled [(ngModel)]="payment" name="payment" type="checkbox" id="pc-check">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="err" *ngIf="error">
+                                {{error}}
+                            </div>
+                            <div class="order-btn">
+                                <button (click)="getUserInfo()" class="btn btn-inverse-primary btn-fw" type="button">
+                                    <div *ngIf = "loading" class="spinner-wrapper">
+                                        <div class="donut"></div>
+                                    </div>
+                                    <div *ngIf = "!loading">
+                                        اجراء الطلب
+                                    </div>
+                                     </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="done" class="col-lg-8">
+                    <p>.شكرا لاستخدامك موقعنا نسعد بخدمتكم</p>
+                    <p>تم تسليم طلباتك</p>
+                    <p *ngIf = "auth.isLoggedIn()" ><a href="">هنا</a>يمكنك متابعة طلباتك من </p>
+                    <p *ngIf = "!auth.isLoggedIn()"> ننصح بالتسجيل في الموقع للحصول على تجربة أفضل</p>
+                    <p><a href="">الصفحة الرئيسية</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

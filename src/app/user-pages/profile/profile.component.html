@@ -1,0 +1,70 @@
+    <!-- Breadcrumb Section Begin -->
+    <div class="breacrumb-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-text">
+                        <span> تحديث معلوماتي</span> /
+                        <a href="#" routerLink="/user/profile"><i class="fa fa-home"></i> الصفحةالشخصية</a>
+                        <a href="#" routerLink="/"><i class="fa fa-home"></i> الرئيسية</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb Section Begin -->
+
+
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">معلومات الحساب</h4>
+        <p class="card-description">
+          تحديث معلوماتي
+        </p>
+
+    <div *ngIf="servererr  " class="alert alert-danger">
+                <div> حدث خطأ تأكد من خدمة الانترنت واملأ جميع الحقول ثم حاول مرة اخرى</div>
+        </div>
+
+    <div *ngIf="done" class="alert alert-primary">
+                <div>تم تحديث معلوماتك بنجاح</div>
+        </div>
+    
+    
+        <form class="forms-sample">
+          <div class="form-group">
+            <label for="exampleInputName1">الاسم</label>
+            <input [(ngModel)]="user.name" name="name" type="text" class="form-control"  placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail3">البريد الالكتروني</label>
+            <input [(ngModel)]="user.email" name="email" type="email" class="form-control" id="exampleInputEmail3" placeholder="Email">
+          </div>
+          <div class="form-group">
+            <label >رقم الهاتف</label>
+            <input [(ngModel)]="user.phone" type="number" class="form-control" id="exampleInputNumber4" name="phone" placeholder="Phone Number">
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectGender">الجنس</label>
+              <select [(ngModel)]="user.gender" name="gender" class="form-control" id="exampleSelectGender">
+                <option>ذكر</option>
+                <option>أنثى</option>
+              </select>
+            </div>
+
+          <div class="form-group">
+            <label for="exampleInputCity1">العنوان</label>
+            <input [(ngModel)]="user.address" name="address" type="text" class="form-control" id="exampleInputCity1" placeholder="Location">
+          </div>
+          <button type="submit" class="btn btn-gradient-primary mr-2" (click)="sendData()">
+              <div *ngIf="loading" class="spinner-wrapper">
+                  <div class="donut"></div>
+                </div><div *ngIf="!loading" >
+                    تحديث
+                </div>
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>

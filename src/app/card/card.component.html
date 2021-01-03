@@ -1,0 +1,26 @@
+<div class="product-card">
+    <div *ngIf ="item.hot" class="hbadge">Hot</div>
+    <div *ngIf ="item.new" class="nbadge">New</div>
+    <div class="product-tumb">
+      <img src={{item.imgUrl}} alt=""> 
+    </div>
+    <div class="product-details">
+      <h4>
+        <a (click)="navItem(item)">{{item.name}}</a>
+      </h4>
+      <div class="product-bottom-details">
+        <div class="product-price"><small *ngIf="item.descount">{{item.descountPrice}} SDG</small>{{item.price}} SDG</div>
+        <div class="product-links">
+          <a (click)="addWish(item)">
+            <i *ngIf = "!liked" class="mdi mdi-heart is"></i>
+            <i *ngIf = "liked" class="colored mdi mdi-heart is"></i>
+          </a>
+          <a (click)="openMediumModal(item)" >
+            <i *ngIf = "!carted" class="mdi mdi-cart is" ></i>
+            <i *ngIf = "carted" class="colored mdi mdi-cart is" ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
