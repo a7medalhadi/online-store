@@ -10,13 +10,13 @@ import { AuthService } from '../../auth.service';
 })
 export class WomenComponent implements OnInit {
   gendary = "Women"
-  pag = 2
   currentPage = 1;
   pager = {};
   pageOfItems = []
   classify = {
     shoes: true,
-    accessories: true
+    accessories: true,
+    cloth:true
   }
   brand = []
   brands
@@ -64,14 +64,14 @@ export class WomenComponent implements OnInit {
       this.isLoading = true
       var classify = []
       let brand = []
-      let thePage = []
       if (this.classify.accessories) {
         classify.push('Accessories')
-        thePage.push('اكسسوارات')
       }
       if (this.classify.shoes) {
         classify.push('Shoes')
-        thePage.push('أحذية')
+      }
+      if (this.classify.shoes) {
+        classify.push('Cloth')
       }
       for(var x=0 ; x<this.brandObj.length;x++){
         if(this.brandObj[x].selected){
@@ -83,7 +83,6 @@ export class WomenComponent implements OnInit {
         brand: brand.join(' ')
       }
       this.configService.filterItem(this.gendary, filter, page).subscribe(observer => {
-        console.log(observer)
         this.pager = observer.pager;
         this.pageOfItems = observer.pageOfItems;
         this.pageOfItems = this.pageOfItems.map(x => {
@@ -101,7 +100,6 @@ export class WomenComponent implements OnInit {
           }
           return x
         })
-        console.log(this.pageOfItems)
         this.isLoading = false
         if (this.pageOfItems && this.pageOfItems.length == 0) {
           this.error = '!لم نعثر على مطابقة'

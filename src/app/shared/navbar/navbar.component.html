@@ -13,10 +13,10 @@
         </div>
       </div>
       <div class="ht-right">
-        <a style="display: none" routerLink="user/login" *ngIf="!auth.isLoggedIn()" href="#" class="mim login-panel">
+        <a style="display: none" routerLink="user/login"  href="#" class="mim login-panel">
           <i class="fa fa-user"></i>تسجيل الدخول
         </a>
-        <div  *ngIf="auth.isLoggedIn()" class="login-panel nav-item nav-profile dropdown" ngbDropdown>
+        <div style="display: none"  class="login-panel nav-item nav-profile dropdown" ngbDropdown>
             <a class="nav-link dropdown-toggle" id="profileDropdown" ngbDropdownToggle>
               <div class="nav-profile-img">
                 <img src="assets/images/faces-clipart/avatar.png" alt="image">
@@ -33,7 +33,7 @@
                 الصفحة الشخصية
               </a>
               <div class="dropdown-divider"></div>
-              <a (click)="auth.logout()" class="dropdown-item" href="javascript:;">
+              <a  class="dropdown-item" href="javascript:;">
                 <i class="mdi mdi-logout mr-2 text-danger"></i>
                 تسجبل الخروج
               </a>

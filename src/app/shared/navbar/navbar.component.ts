@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit {
   wish = JSON.parse(localStorage.getItem("wishs"))
   cartModal = false
 
-  constructor(private storageService: LstorageService , config: NgbDropdownConfig, public auth: AuthService, public modalService: NgbModal, public router: Router) {
+  constructor(private storageService: LstorageService , config: NgbDropdownConfig, public modalService: NgbModal, public router: Router) {
     config.placement = 'bottom-right';
     this.storageService.watchStorage().subscribe((data:string) => {
       this.cart = JSON.parse(localStorage.getItem("myCart"))
@@ -50,7 +50,6 @@ export class NavbarComponent implements OnInit {
       this.cartnum = this.cart.length
       console.log('changed')
       })
-    this.fetchData()
   }
 
 
@@ -67,7 +66,7 @@ export class NavbarComponent implements OnInit {
     this.cartnum = this.cart.length
   }
 
-  fetchData() {
+ /* fetchData() {
     if (this.auth.isLoggedIn()) {
       this.auth.profile().subscribe(user => {
         this.details = user;
@@ -75,7 +74,7 @@ export class NavbarComponent implements OnInit {
         //  this.delay().then(() => this.fetchData())
       });
     }
-  }
+  }*/
   delay() {
     return new Promise(resolve => setTimeout(resolve, 2000));
   }

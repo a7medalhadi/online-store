@@ -15,7 +15,8 @@ export class MenComponent implements OnInit {
   pageOfItems = []
   classify = {
     shoes: true,
-    accessories: true
+    accessories: true,
+    cloth:true
   }
   brand = []
   brands
@@ -63,14 +64,14 @@ export class MenComponent implements OnInit {
       this.isLoading = true
       var classify = []
       let brand = []
-      let thePage = []
       if (this.classify.accessories) {
         classify.push('Accessories')
-        thePage.push('اكسسوارات')
       }
       if (this.classify.shoes) {
         classify.push('Shoes')
-        thePage.push('أحذية')
+      }
+      if (this.classify.shoes) {
+        classify.push('Cloth')
       }
       for(var x=0 ; x<this.brandObj.length;x++){
         if(this.brandObj[x].selected){

@@ -65,6 +65,13 @@
                                 اكسسوارات
                             </label>
                         </li>
+                        <li>
+                            <label for="accessories">
+                                <input (change)="fetchData()" [(ngModel)]='classify.cloth' name="accessories" type="checkbox" id="cloth">
+                                <span class="checkmark"></span>
+                                ملابس
+                            </label>
+                        </li>
                     </ul>
                 </div>
                 <div class="filter-widget">
