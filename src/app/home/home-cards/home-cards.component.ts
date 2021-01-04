@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../config/config.service';
-import { AuthService } from '../../auth.service';
-import { UserDetails } from '../../interfaces/authconfig';
+
 import { interval, Subscription } from 'rxjs';
 import { Wish } from '../../card/card.component';
 
@@ -14,19 +13,16 @@ import { Wish } from '../../card/card.component';
 export class HomeCardsComponent implements OnInit {
   @Input() item;
   subscription: Subscription;
-  user: UserDetails
   liked = false
   carted = false
-  constructor( public router: Router, public auth: AuthService, public config: ConfigService) { }
+  constructor( public router: Router,  public config: ConfigService) { }
 
   ngOnInit() {
     this.fetchData()
   }
 
   fetchData() {
-    this.auth.profile().subscribe(user => {
-      this.user = user
-    })
+
     let wishs = JSON.parse(localStorage.getItem("wishs"))
     this.liked = wishs.some(x => x.itemId === this.item._id)
     this.subscription = interval(10).subscribe(val => this.carter());
@@ -46,23 +42,7 @@ export class HomeCardsComponent implements OnInit {
         newWishs.push(x)
       })
     }
-    if (this.user) {
-      var data: Wish = {
-        itemId: item._id,
-        itemName: item.name,
-        itemImgUrl: item.imgUrl,
-        itemGender: item.gender,
-        itemClassefication: item.classification,
-        itemSizes: item.sizes,
-        itemPrice: item.price,
-        itemPurchases: item.purchases,
-        userId: this.user._id,
-        userName: "",
-        userEmail: "",
-        userPhone: 0,
-        userAddress: "",
-      }
-    } else {
+
       var data: Wish = {
         itemId: item._id,
         itemName: item.name,
@@ -78,14 +58,12 @@ export class HomeCardsComponent implements OnInit {
         userPhone: 0,
         userAddress: "",
       }
-    }
+    
 
     var re = newWishs.some(x => x.itemId === data.itemId)
-    console.log(re)
     if (!re) {
       newWishs.push(data)
       localStorage.setItem('wishs', JSON.stringify(newWishs))
-      if (this.user) { this.config.postWishlist(data).subscribe(data => data) }
     } else {
       newWishs = newWishs.filter(x => x.itemId !== data.itemId)
       localStorage.setItem('wishs', JSON.stringify(newWishs))

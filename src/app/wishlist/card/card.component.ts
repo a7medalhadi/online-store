@@ -1,8 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfigService } from '../../config/config.service';
-import { AuthService } from '../../auth.service';
-import { UserDetails } from '../../interfaces/authconfig';
 import { interval, Subscription } from 'rxjs';
 
 
@@ -14,10 +12,9 @@ import { interval, Subscription } from 'rxjs';
 export class CardComponent implements OnInit {
   @Input() item;
   subscription: Subscription;
-  user: UserDetails
   carted = false
   liked = true
-  constructor(public router: Router, public auth: AuthService, public config: ConfigService) { }
+  constructor(public router: Router, public config: ConfigService) { }
 
   ngOnInit() {
     this.subscription = interval(10).subscribe(val => this.carter());

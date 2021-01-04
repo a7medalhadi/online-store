@@ -194,12 +194,14 @@
 
 .checkout-form .place-order .order-total .order-btn {
 	text-align: center;
+	color: #e7ab3c
 }
 
 .checkout-form .place-order .order-total .order-btn .place-btn {
 	padding: 13px 40px 11px;
-	background: #000000;
-	border-color: #000000;
+	background: #e7ab3c !important;
+	border-color: #e7ab3c;
+	color: white
 }
 
 .contact-form .leave-comment .comment-form .site-btn {

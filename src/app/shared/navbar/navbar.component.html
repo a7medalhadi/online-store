@@ -13,32 +13,7 @@
         </div>
       </div>
       <div class="ht-right">
-        <a style="display: none" routerLink="user/login"  href="#" class="mim login-panel">
-          <i class="fa fa-user"></i>تسجيل الدخول
-        </a>
-        <div style="display: none"  class="login-panel nav-item nav-profile dropdown" ngbDropdown>
-            <a class="nav-link dropdown-toggle" id="profileDropdown" ngbDropdownToggle>
-              <div class="nav-profile-img">
-                <img src="assets/images/faces-clipart/avatar.png" alt="image">
-                <span class="availability-status online"></span>
-              </div>
-              <div class="nav-profile-text">
-                <p class="mb-1 text-black">{{details.name}}</p>
-              </div>
-            </a>
-            <div class="min dropdown-menu navbar-dropdown" ngbDropdownMenu aria-labelledby="profileDropdown">
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" routerLink="user/profile" routerLinkActive #myorders="routerLinkActive">
-                <i class="mdi mdi mdi-basket mr-2 text-primary"></i>
-                الصفحة الشخصية
-              </a>
-              <div class="dropdown-divider"></div>
-              <a  class="dropdown-item" href="javascript:;">
-                <i class="mdi mdi-logout mr-2 text-danger"></i>
-                تسجبل الخروج
-              </a>
-            </div>
-          </div>
+
         <div class="top-social">
           <a href="#">
             <i class="ti ti-facebook"></i>
@@ -109,7 +84,7 @@
 
 <!--shopping cart start********************************************************************************-->
 <div class="container">
-  <div (mouseover)="cartModal = true" (mouseout)="cartModal=false" [ngClass]="{'cart-hovering':cartModal}" class=" shopping-cart">
+  <div (mouseover)="cartModal = true" (mouseout)="cartModal=false; numbering()" [ngClass]="{'cart-hovering':cartModal}" class=" shopping-cart">
     <div class="shopping-cart-header">
       <i class="fa fa-shopping-cart cart-icon"></i>
       <span class="badge">{{cartnum}}</span>
@@ -146,7 +121,7 @@
       </li>
     </ul>
     <div *ngIf="error && !noItems" class="er">{{error}}</div>
-    <a *ngIf="!noItems" (click)="navCheckout()" class="button">أكمل الشراء</a>
+    <a style="cursor: pointer;" *ngIf="!noItems" (click)="navCheckout()" class="button">أكمل الشراء</a>
   </div>
 </div>
 <!--end shopping-cart -->

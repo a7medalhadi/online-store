@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config/config.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 
 @Component({
@@ -14,7 +14,7 @@ export class ItemComponent implements OnInit {
   item
   related
   done = false
-  constructor(public configService: ConfigService, public activatedroute: ActivatedRoute) { }
+  constructor(public router:Router,  public configService: ConfigService, public activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchData()
@@ -37,8 +37,8 @@ export class ItemComponent implements OnInit {
       })
     })
   }
-  nav(){
-    
+  navItem(item) {
+    this.router.navigate(['deps/item', item._id]);
   }
 
   openMediumModal(item) {

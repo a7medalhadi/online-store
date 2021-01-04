@@ -2,8 +2,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ConfigService } from '../../config/config.service';
-import { AuthService } from '../../auth.service';
-import { UserDetails } from '../../interfaces/authconfig';
+
 import { timeout } from '../../../../node_modules/rxjs/operators';
 
 @Component({
@@ -16,7 +15,6 @@ export class MyBootstrapModalComponent  {
   loading = true
   notLogged = false
   done = false
-  user: UserDetails
   cart = []
   selectedSize
   totalPrice = 0
@@ -24,7 +22,6 @@ export class MyBootstrapModalComponent  {
   constructor(
     public activeModal: NgbActiveModal,
     public configService: ConfigService,
-    public auth: AuthService
   ) { }
 
 

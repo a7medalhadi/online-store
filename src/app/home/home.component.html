@@ -6,8 +6,8 @@
                 <div class="row">
                     <div class="col-lg-5">
                         <h1 [ngClass]="{'hero1':act}">تخفيضات</h1>
-                        <p [ngClass]="{'hero2':act}">.تخفيضات على جميع الأحذية وعروض خاصة لمدة اسبوع بمناسبة الافتتاح</p>
-                        <a [ngClass]="{'hero3':act}" href="#" class="primary-btn">تسوق الان</a>
+                        <p [ngClass]="{'hero2':act}">تخفيضات كبيرة قادمة وعروض خاصة بمناسبة الافتتاح</p>
+                        <a [ngClass]="{'hero3':act}" routerLink="../deps/women" class="primary-btn">تسوق الان</a>
                     </div>
                 </div>
             </div>
@@ -16,15 +16,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5">
-                        <h1 [ngClass]="{'hero1':act}">تخفيضات</h1>
-                        <p [ngClass]="{'hero2':act}">.تخفيضات على جميع الأحذية وعروض خاصة لمدة اسبوع بمناسبة الافتتاح</p>
-                        <a [ngClass]="{'hero3':act}" href="#" class="primary-btn">تسوق الان</a>
+                        <h1 [ngClass]="{'hero1':act}">هدفنا راحة العميل</h1>
+                        <p [ngClass]="{'hero2':act}">.نوفر اسهل طريقة تسوق في السودان مع افضل واسرع خدمة ممكنة</p>
+                        <a [ngClass]="{'hero3':act}" routerLink="../deps/women" class="primary-btn">تسوق الان</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</section> 
 <!-- Hero Section End -->
 
 
@@ -46,7 +46,7 @@
                         <li (click)="womenData('Cloth'); step2 = 3" [ngClass]="{'active': step2 === 3}">ملابس</li>
                     </ul>
                 </div>
-                <div class="swiper-container2">
+                <div class="swiper-container3">
                     <div class="swiper-wrapper">
                         <div *ngFor="let item of wList" class="swiper-slide">
                             <app-home-cards [item]="item"></app-home-cards>
@@ -128,9 +128,7 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <div *ngFor="let item of hList" class="swiper-slide">
-                        <div class="col-lg-3 col-sm-6">
                             <app-home-cards [item]="item"></app-home-cards>
-                        </div>
                     </div>
                 </div>
                 <!-- Add Arrows -->
@@ -151,8 +149,8 @@
                     <img src="../../assets/images/fashi/icon-1.png" alt="">
                 </div>
                 <div class="sb-text">
-                    <h6>خدمة ارجاع متوفرة</h6>
-                    <p>نوفر خدمة ارجاع </p>
+                    <h6>ضمان</h6>
+                    <p>  نضمن سلامة البضاعة من عيوب التصنيع </p>
                 </div>
             </div>
         </div>
@@ -174,7 +172,7 @@
                 </div>
                 <div class="sb-text">
                     <h6>دفع امن</h6>
-                    <p>امكانية الدفع المباشر</p>
+                    <p> دفع مباشر بعد الاستلام</p>
                 </div>
             </div>
         </div>

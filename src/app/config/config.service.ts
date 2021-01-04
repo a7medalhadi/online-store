@@ -48,9 +48,6 @@ getSomeItem(classify,gendary): Observable<Item>{
   getRelated(classify,gendary): Observable<Item>{
     return this.http.get<Item>(this.url+'/items/related/'+classify+'/'+gendary).pipe(map(data=>data),retry(3),timeout(30000))
   }
-  updateItem( pusrchase:any ,itemId): Observable<any>{
-    return this.http.patch<any>(this.url+'/items/purchase/'+itemId,pusrchase,{ headers: { Authorization: `Bearer ${this.getToken()}` }}).pipe(retry(3),timeout(30000))
-  }
 
 
   //Orders*************************************************************************************************

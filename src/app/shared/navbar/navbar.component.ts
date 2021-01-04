@@ -1,32 +1,20 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '../../auth.service';
 import { Router } from '../../../../node_modules/@angular/router';
-import { UserDetails } from '../../interfaces/authconfig';
-import { LstorageService } from '../../lstorage.service';
+
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
   providers: [NgbDropdownConfig],
-}) 
+})
 export class NavbarComponent implements OnInit {
   error
   errors = []
   noItems
   totalPrice = 0
-  details: UserDetails = {
-    _id: "",
-    email: "",
-    name: "",
-    phone: "",
-    address: "",
-    gender: "",
-    verified: false,
-    exp: 0,
-    iat: 0
-  }
+
   searchFor
   cartnum = 0
   wishnum = 0
@@ -35,48 +23,34 @@ export class NavbarComponent implements OnInit {
   wish = JSON.parse(localStorage.getItem("wishs"))
   cartModal = false
 
-  constructor(private storageService: LstorageService , config: NgbDropdownConfig, public modalService: NgbModal, public router: Router) {
+  constructor(config: NgbDropdownConfig, public modalService: NgbModal, public router: Router) {
     config.placement = 'bottom-right';
-    this.storageService.watchStorage().subscribe((data:string) => {
-      this.cart = JSON.parse(localStorage.getItem("myCart"))
-      this.cartnum = this.cart.length
-      console.log('changed')
-      })
   }
 
   ngOnInit() {
-    this.storageService.watchStorage().subscribe((data:string) => {
-      this.cart = JSON.parse(localStorage.getItem("myCart"))
-      this.cartnum = this.cart.length
-      console.log('changed')
-      })
+    this.numbering()
   }
 
-
+  numbering() {
+    this.cart = JSON.parse(localStorage.getItem("myCart"))
+    this.wish = JSON.parse(localStorage.getItem("wishs"))
+    this.cartnum = this.cart.length
+    this.wishnum = this.wish.length
+    if (!this.cartModal) {
+      this.delay().then(() => this.numbering())
+    }
+  }
 
   search(): void {
     this.redirectTo('/deps/search')
   }
-  redirectTo(uri:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate(['/deps/search'], { state: { data: this.searchFor }} ))
-  }
-  onStorageChange(ev:KeyboardEvent) {
-    this.cart = JSON.parse(localStorage.getItem("myCart"))
-    this.cartnum = this.cart.length
+  redirectTo(uri: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate(['/deps/search'], { state: { data: this.searchFor } }))
   }
 
- /* fetchData() {
-    if (this.auth.isLoggedIn()) {
-      this.auth.profile().subscribe(user => {
-        this.details = user;
-      }, (err) => {
-        //  this.delay().then(() => this.fetchData())
-      });
-    }
-  }*/
   delay() {
-    return new Promise(resolve => setTimeout(resolve, 2000));
+    return new Promise(resolve => setTimeout(resolve, .1));
   }
 
 
@@ -103,6 +77,10 @@ export class NavbarComponent implements OnInit {
       return x
     })
     localStorage.setItem('myCart', JSON.stringify(newCart))
+    this.totalPrice = 0
+    for (var x = 0; x < newCart.length; x++) {
+      this.totalPrice = this.totalPrice + this.cart[x].itemPrice * this.cart[x].itemQua
+    }
   }
 
   openCartModal() {
@@ -119,7 +97,7 @@ export class NavbarComponent implements OnInit {
     if (this.cart.length != 0) {
       this.noItems = false
       for (var x = 0; x < this.cart.length; x++) {
-        this.totalPrice = this.totalPrice + this.cart[x].itemPrice
+        this.totalPrice = this.totalPrice + this.cart[x].itemPrice * this.cart[x].itemQua
       }
 
     } else {
@@ -138,7 +116,7 @@ export class NavbarComponent implements OnInit {
     this.errors = []
     this.cart = JSON.parse(localStorage.getItem("myCart"))
     this.cart.map(x => {
-      if ((x.itemSizes != 0) && ((!x.selectedSize)||(x.selectedSize == 0))) {
+      if ((x.itemSizes != 0) && ((!x.selectedSize) || (x.selectedSize == 0))) {
         this.errors.push(x)
       }
     })

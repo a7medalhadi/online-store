@@ -2,8 +2,8 @@
     <div class="container">
         <form action="#" class="checkout-form">
             <div class="row">
-                <div *ngIf="!auth.isLoggedIn() && !done" class="col-lg-6">
-                    <div class="checkout-content">
+                <div  *ngIf="!done" class="col-lg-6">
+                    <div style="display: none" class="checkout-content">
                         <a href="#" class="content-btn">تسجيل الدخول</a>
                     </div>
                     <h4>معلومات الاتصال</h4>
@@ -21,8 +21,7 @@
                             <input [(ngModel)]="noUser.address" name="address" type="text" id="street" class="street-first">
                         </div>
                         <div class="col-lg-6">
-                            <label for="email">البريد الالكتروني
-                                <span>*</span>
+                            <label for="email">(البريد الالكتروني(اختياري
                             </label>
                             <input [(ngModel)]="noUser.email" name="email" type="text" id="email">
                         </div>
@@ -32,7 +31,7 @@
                             </label>
                             <input [(ngModel)]="noUser.phone" name="phone" type="text" id="phone">
                         </div>
-                        <div class="col-lg-12">
+                        <div class="col-lg-12">(اختياري)
                             <div class="create-item">
                                 <label for="acc-create">
                                     تسجيل معلوماتك في الموقع؟
@@ -56,7 +55,7 @@
                                 </li>
                                 <div *ngFor="let item of cart">
                                     <li class="fw-normal">{{item.itemName}}
-                                        <span>{{item.itemPrice}}SDG</span>
+                                        <span>{{item.itemPrice * item.itemQua}}SDG({{item.itemQua}})</span>
                                     </li>
                                 </div>
                                 <li class="total-price">المجموع
@@ -76,7 +75,7 @@
                                 {{error}}
                             </div>
                             <div class="order-btn">
-                                <button (click)="getUserInfo()" class="btn btn-inverse-primary btn-fw" type="button">
+                                <button (click)="getUserInfo()" class="site-btn place-btn btn btn-inverse-primary btn-fw" type="button">
                                     <div *ngIf = "loading" class="spinner-wrapper">
                                         <div class="donut"></div>
                                     </div>
@@ -89,10 +88,8 @@
                     </div>
                 </div>
                 <div *ngIf="done" class="col-lg-8">
+                    <p> تم تسليم طلباتك سيتم التواصل معك عبر رقم الهاتف</p>
                     <p>.شكرا لاستخدامك موقعنا نسعد بخدمتكم</p>
-                    <p>تم تسليم طلباتك</p>
-                    <p *ngIf = "auth.isLoggedIn()" ><a href="">هنا</a>يمكنك متابعة طلباتك من </p>
-                    <p *ngIf = "!auth.isLoggedIn()"> ننصح بالتسجيل في الموقع للحصول على تجربة أفضل</p>
                     <p><a href="">الصفحة الرئيسية</a></p>
                 </div>
             </div>

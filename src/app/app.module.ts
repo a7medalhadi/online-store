@@ -8,7 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';   
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TodoComponent } from './apps/todo-list/todo/todo.component';
@@ -18,8 +18,6 @@ import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ConfigService } from './config/config.service';
 import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootstrap-modal.component';
-import { AuthGuardService } from './auth-gard.service';
-import { LogGardService } from './log-gard.service';
 import { HomeComponent } from './home/home.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { HomeCardsComponent } from './home/home-cards/home-cards.component';
@@ -57,9 +55,7 @@ import { HomeCardsComponent } from './home/home-cards/home-cards.component';
     MyBootstrapModalComponent
   ],
   providers: [
-    ConfigService,
-    AuthGuardService,
-    LogGardService
+    ConfigService
   ],
   bootstrap: [AppComponent]
 })

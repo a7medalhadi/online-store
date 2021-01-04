@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   dList
   mySwiper1: swiper
   mySwiper2: swiper
+  mySwiper3: swiper
   act = true
   constructor(private config: ConfigService) { }
   ngAfterViewInit() {
@@ -50,37 +51,8 @@ export class HomeComponent implements OnInit {
       }).on('changed.owl.carousel', (e) => {
         this.act = false
         this.sleep(0).then(() => this.act = true)
-        console.log(this.act)
       });
 
-      /*------------------
-          Product Slider
-      --------------------*/
-      $(".product-slider").owlCarousel({
-        loop: true,
-        margin: 25,
-        nav: true,
-        items: 4,
-        dots: true,
-        navText: ['<i style="font-size: 30px; position: absolute;left: 40px;top: 45%;color: #252525;" class="ti ti-angle-left"> </i>', '<i style="font-size: 30px; position: absolute;left: auto;	right: 40px;top: 45%;color: #252525;" class="owlnext ti ti-angle-right"></i > '],
-        smartSpeed: 1200,
-        autoHeight: false,
-        autoplay: true,
-        responsive: {
-          0: {
-            items: 1,
-          },
-          576: {
-            items: 2,
-          },
-          992: {
-            items: 2,
-          },
-          1200: {
-            items: 2,
-          }
-        }
-      });
     })(jQuery);
   }
 
@@ -156,6 +128,44 @@ export class HomeComponent implements OnInit {
     })
 
   }
+  swiper3() {
+    this.mySwiper3 = new swiper('.swiper-container3', {
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      pagination: {
+        el: '.swiper-pagination',
+      },
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: true,
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1,
+          spaceBetween: 10
+
+        },
+        576: {
+          slidesPerView: 2,
+          spaceBetween: 5
+        },
+        992: {
+          slidesPerView: 2,
+          spaceBetween: 5
+
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 2
+
+        }
+      },
+
+    })
+
+  }
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
   }
@@ -176,7 +186,7 @@ export class HomeComponent implements OnInit {
     this.config.getSomeItem(classify, gendry).subscribe(observer => {
       this.mList = observer
       this.mList = this.correctore(this.mList)
-      this.sleep(40).then(() => this.swiper2())
+      this.sleep(20).then(() => this.swiper2())
     })
   }
 
@@ -187,7 +197,7 @@ export class HomeComponent implements OnInit {
     this.config.getSomeItem(classify, gendry).subscribe(observer => {
       this.wList = observer
       this.wList = this.correctore(this.wList)
-      this.sleep(40).then(() => this.swiper2())
+      this.sleep(20).then(() => this.swiper3())
 
     })
   }

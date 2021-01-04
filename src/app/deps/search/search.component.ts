@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../../config/config.service';
-import { AuthService } from '../../auth.service';
-import { config } from '../../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-search',
@@ -10,13 +8,13 @@ import { config } from '../../../../node_modules/rxjs';
 })
 export class SearchComponent implements OnInit {
   searchFor = history.state.data
-  isLoading 
+  isLoading
   itemsList
   noItem = false
   currentPage = 1;
   pager = {};
-  pageOfItems =[]
-  constructor(public configService: ConfigService,public auth:AuthService) { }
+  pageOfItems = []
+  constructor(public configService: ConfigService) { }
 
   ngOnInit() {
     this.fetchData()
@@ -24,7 +22,7 @@ export class SearchComponent implements OnInit {
 
   fetchData(page?) {
     this.isLoading = true
-    this.configService.searchItem(this.searchFor,page).subscribe(observer=>{
+    this.configService.searchItem(this.searchFor, page).subscribe(observer => {
       this.pager = observer.pager;
       this.pageOfItems = observer.pageOfItems;
       this.pageOfItems = this.pageOfItems.map(x => {
@@ -37,14 +35,13 @@ export class SearchComponent implements OnInit {
         createdOn.setHours(0, 0, 0, 0);
         today.setHours(0, 0, 0, 0)
         var diff = (+today - +createdOn) / msInDay
-        if(diff >= 15){
+        if (diff >= 15) {
           x.new = false
         }
         return x
       })
-     this.isLoading = false
+      this.isLoading = false
     })
 
   }
-  }
-  
+}

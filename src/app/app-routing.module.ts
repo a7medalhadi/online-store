@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'check', loadChildren: () => import('./checkout/checkout/checkout.module').then(m => m.CheckoutModule) },
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'error-pages', loadChildren: () => import('./error-pages/error-pages.module').then(m => m.ErrorPagesModule) },
-  {path: 'user', loadChildren:()=> import('./user-pages/user/user.module').then(m=>m.UserModule)},
   {path: 'deps', loadChildren:()=> import('./deps/deps/deps.module').then(m=>m.DepsModule)}
 ];
 
