@@ -67,7 +67,7 @@ export class MenComponent implements OnInit {
     if (this.classify.shoes) {
       classify.push('Shoes')
     }
-    if (this.classify.shoes) {
+    if (this.classify.cloth) {
       classify.push('Cloth')
     }
     for (var x = 0; x < this.brandObj.length; x++) {
