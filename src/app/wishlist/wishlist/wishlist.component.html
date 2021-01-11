@@ -22,7 +22,7 @@
             <div class="col-lg-9 order-1 order-lg-1">
                 <div class="product-list">
                     <div class="error" *ngIf="!itemList">"قائمة الامنيات خالية"</div>
-                    <div *ngIf="!isLoading && !error" class="row">
+                    <div class="row">
                         <div *ngFor="let item of itemList" class="col-lg-4 col-sm-6">
                             <app-card [item]="item"></app-card>
                         </div>

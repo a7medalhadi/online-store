@@ -33,7 +33,7 @@
                         <span>:العلامة التجارية</span>
                         <span>{{item.brand}}</span>
                     </div>
-                    <div *ngIf="!noSizes" class="condition">
+                    <div class="condition">
                         <span>:المقاسات المتوفرة</span>
                         <span>{{item.sizes}}</span>
                     </div>
@@ -97,12 +97,10 @@
                                     <small *ngIf="item.descount">{{item.descountPrice}} SDG</small>{{item.price}} SDG</div>
                                 <div class="product-links">
                                     <a (click)="addWish(item)">
-                                        <i *ngIf="!liked" class="mdi mdi-heart is"></i>
-                                        <i *ngIf="liked" class="colored mdi mdi-heart is"></i>
+                                        <i  class="mdi mdi-heart is"></i>
                                     </a>
                                     <a (click)="openMediumModal(item)">
-                                        <i *ngIf="!carted" class="mdi mdi-cart is"></i>
-                                        <i *ngIf="carted" class="colored mdi mdi-cart is"></i>
+                                        <i  class="mdi mdi-cart is"></i>
                                     </a>
                                 </div>
                             </div>

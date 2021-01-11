@@ -9,7 +9,7 @@ import { ConfigService } from '../../config/config.service';
 export class MenComponent implements OnInit {
   gendary = "Men"
   currentPage = 1;
-  pager = {};
+  pager 
   pageOfItems = []
   classify = {
     shoes: true,

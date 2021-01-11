@@ -17,7 +17,6 @@ import { ContentAnimateDirective } from './shared/directives/content-animate.dir
 import { TodoListComponent } from './apps/todo-list/todo-list.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { ConfigService } from './config/config.service';
-import { MyBootstrapModalComponent } from './modals/my-bootstrap-modal/my-bootstrap-modal.component';
 import { HomeComponent } from './home/home.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { HomeCardsComponent } from './home/home-cards/home-cards.component';
@@ -35,7 +34,6 @@ import { HomeCardsComponent } from './home/home-cards/home-cards.component';
     TodoComponent,
     SpinnerComponent,
     ContentAnimateDirective,
-    MyBootstrapModalComponent,
     HomeCardsComponent,
     HomeComponent,
   ],
@@ -50,9 +48,6 @@ import { HomeCardsComponent } from './home/home-cards/home-cards.component';
     ChartsModule,
     MDBBootstrapModule.forRoot(),
     HttpClientModule
-  ],
-  entryComponents:[
-    MyBootstrapModalComponent
   ],
   providers: [
     ConfigService

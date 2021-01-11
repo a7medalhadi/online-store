@@ -12,7 +12,7 @@ export class SearchComponent implements OnInit {
   itemsList
   noItem = false
   currentPage = 1;
-  pager = {};
+  pager 
   pageOfItems = []
   constructor(public configService: ConfigService) { }
 
