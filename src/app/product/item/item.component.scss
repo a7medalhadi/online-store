@@ -126,7 +126,7 @@
 }
 .cta .icon-wrap .button {
   display: inline-block;
-  background: #fdda97;
+  background: #e7ab3c;
   color: white;
   font-size: 14px;
   text-transform: uppercase;
@@ -192,3 +192,33 @@
 		padding: 16px 12px 12px 11px;
 	}
 }
+
+.spinner-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 0.5rem;
+	position: relative;
+	width: 100%;
+	@media (max-width: 991px) {
+	  width: 100%;
+	}
+	.donut {
+	  width: 1.5rem;
+	  height: 1.5rem;
+	  border-radius: 50%;
+	  border: 0.3rem solid rgba(#ffffff, 0.3);
+	  border-top-color: #ffffff;
+	  animation: 1.5s spin infinite linear;
+	}
+  }
+  
+  @keyframes spin {
+	to {
+	  transform: rotate(360deg);
+	}
+  }
+  .notif{
+    color : green;
+    font-size: small
+  }

@@ -10,17 +10,21 @@ import { Wish } from '../../card/card.component';
   styleUrls: ['./item.component.scss']
 })
 export class ItemComponent implements OnInit {
+  loading = false
   crumbLink
   loaded = false
   item
   related
   done = false
+  added = false
   constructor(public router:Router,  public configService: ConfigService, public activatedroute: ActivatedRoute) { }
 
   ngOnInit() {
     this.fetchData()
   }
-
+  sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+  }
   fetchData() {
     this.activatedroute.params.subscribe(data => {
       this.configService.getItemById(data.itemId).subscribe(result => {
@@ -49,6 +53,7 @@ navi(){
   }
 }
   openMediumModal(item) {
+    this.loading = true
     let cart = JSON.parse(localStorage.getItem("myCart"))
     let newCart = []
     if (cart) {
@@ -79,6 +84,11 @@ navi(){
         newCart.push(data)
         localStorage.setItem('myCart', JSON.stringify(newCart))
       }
+      this.sleep(1000).then(()=>{
+        this.loading = false
+        this.added = false
+      })
+      this.sleep(500).then(()=> this.added = true)
     }
     addWish(item) {
       let wishs = JSON.parse(localStorage.getItem("wishs"))

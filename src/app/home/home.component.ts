@@ -176,7 +176,6 @@ export class HomeComponent implements OnInit {
     this.menData('Shoes')
     this.womenData('Shoes')
     this.descData()
-    this.hotData()
   }
 
 
@@ -207,8 +206,8 @@ export class HomeComponent implements OnInit {
     this.config.getDescItems().subscribe(observer => {
       this.dList = observer
       this.dList = this.correctore(this.dList)
-      this.sleep(20).then(() => this.swiper())
-
+      this.sleep(20).then(() => this.hotData()
+      )
     })
   }
 
@@ -217,6 +216,7 @@ export class HomeComponent implements OnInit {
     this.config.getHotItems().subscribe(observer => {
       this.hList = observer
       this.hList = this.correctore(this.hList)
+      this.sleep(20).then(()=>this.swiper())
     })
   }
 

@@ -123,6 +123,7 @@ export class NavbarComponent implements OnInit {
     if (this.errors.length == 0) {
       this.router.navigateByUrl('/check/out')
       this.error = null
+      this.cartModal = false
     } else {
       document.querySelector('.size').classList.toggle('active')
       this.error = "!يرجى اختيار المقاس"

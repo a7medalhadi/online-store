@@ -57,10 +57,16 @@
                                 <span>SDG</span>{{item.price}}</div>
                         </div>
                         <div class="icon-wrap">
-                            <a href="#">
-                            </a>
+                            <div *ngIf="added" class="notif">
+                                <i class="mdi mdi-check"></i>تم اضافة العنصر
+                            </div>
                             <div class="button" (click)="openMediumModal(item)">
-                                <i class="mdi mdi-cart"></i>أضف الى السلة
+                                <div *ngIf="loading" class="spinner-wrapper">
+                                    <div class="donut"></div>
+                                </div>
+                                <div *ngIf="!loading">
+                                    <i class="mdi mdi-cart"></i>أضف الى السلة
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -97,10 +103,10 @@
                                     <small *ngIf="item.descount">{{item.descountPrice}} SDG</small>{{item.price}} SDG</div>
                                 <div class="product-links">
                                     <a (click)="addWish(item)">
-                                        <i  class="mdi mdi-heart is"></i>
+                                        <i class="mdi mdi-heart is"></i>
                                     </a>
                                     <a (click)="openMediumModal(item)">
-                                        <i  class="mdi mdi-cart is"></i>
+                                        <i class="mdi mdi-cart is"></i>
                                     </a>
                                 </div>
                             </div>
