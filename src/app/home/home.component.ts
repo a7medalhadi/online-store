@@ -10,8 +10,8 @@ declare var jQuery: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  step = 1
-  step2 = 1
+  step = 2
+  step2 = 2
   wList
   mList
   hList
