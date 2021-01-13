@@ -173,8 +173,8 @@ export class HomeComponent implements OnInit {
         Fetching data from server
   -------------------------------*/
   fetchingData() {
-    this.menData('Shoes')
-    this.womenData('Shoes')
+    this.menData('Accessories')
+    this.womenData('Accessories')
     this.descData()
   }
 
