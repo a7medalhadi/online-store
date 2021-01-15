@@ -23,11 +23,7 @@
     width: 100%;
   }
 }
-.cop{
-  margin-top: 20px
-}
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
 *{ 
   margin: 0;
   padding: 0;  
@@ -36,69 +32,14 @@
   font-family: Arial, Helvetica, sans-serif;
   text-align:  -webkit-left !important;
 }
-.content1{
-  position: relative;
-  margin: 130px auto;
-  text-align: center;
-  padding: 0 20px;
-}
-.content1 .text{
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #b66dff;
-}
-.content1 .p{
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: #b66dff;
-}
+
 footer{
   position: relative;
   bottom: 0px;
   width: 100%;
   background: #f3f1f3 !important
 }
-.main-content{
-  display: none;
-  @media(max-width: 767px){
-    display: flex;
-  }
-}
-.main-content .box{
-  flex-basis: 50%;
-}
-.box h2{
-  font-size: 0.99rem;
-  font-weight: 600;
-  text-transform: uppercase;
-}
-.box .content{
-  position: relative;
-}
 
-.left .content p{
-  text-align: justify;
-  color: transparent
-}
-.left .content .social{
-  margin-top: -60px
-}
-.left .content .social a{
-  padding: 0 2px;
-}
-.left .content .social a span{
-  height: 40px;
-  width: 40px;
-  background: transparent;
-  line-height: 40px;
-  text-align: center;
-  font-size: 18px;
-  border-radius: 5px;
-  transition: 0.3s;
-}
-.left .content .social a span:hover{
-  background: #b66dff;
-}
 .mdi{
   font-size: 1.4375rem;
   background: transparent;
@@ -115,15 +56,19 @@ footer{
   position: relative;
   margin: -4px 10px 0 0;
 }
-.center .content .text{
-  font-size: 0.875rem;;
-  font-weight: 500;
-  padding-left: 10px;
-}
-.center .content .phone{
+.co{
+  @media (min-width: 991px) {
+    margin-top: 20px
+  }
 }
 
 
+.cop{
+  @media (min-width: 991px) {
+    display: none !important;
+  }
+  
+}
 
 
 @media screen and (max-width: 900px) {
