@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConfigLoadEnd } from '@angular/router';
+declare let gtag: Function;
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,21 @@ import { Router, NavigationEnd, NavigationStart, RouteConfigLoadStart, RouteConf
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit{
-  title = 'demo1';
-
   showSidebar: boolean = true;
   showNavbar: boolean = true;
   showFooter: boolean = true;
   isLoading: boolean;
   constructor(private router: Router) {
-    
+    router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
+          gtag('config', 'G-VYEJHVLH69', 
+                {
+                  'page_path': event.urlAfterRedirects
+                }
+               );
+       }
+    }
+ )
     // Removing Sidebar, Navbar, Footer for Documentation, Error and Auth pages
     router.events.forEach((event) => { 
       if(event instanceof NavigationStart) {
